@@ -1,0 +1,5 @@
+{
+  "db": {
+    "host": "mongodb://heroku_8dqk4vg1:8rrd8u906238jbmuvles25m6q2@ds129462.mlab.com:29462/heroku_8dqk4vg1"
+  }
+}

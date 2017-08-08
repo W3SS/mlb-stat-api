@@ -1,14 +1,12 @@
-const mongoose = require('mongoose');
-
-const database = mongoose.connection;
+const mongoose = require('mongoose')
 
 let connect = host => {
-  mongoose.Promise = global.Promise;
+  mongoose.Promise = global.Promise
   return mongoose.connect(host, {
     useMongoClient: true
-  });
-};
+  })
+}
 
 module.exports = {
   connect: connect
-};
+}

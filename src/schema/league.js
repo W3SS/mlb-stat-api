@@ -7,28 +7,28 @@ const
     GraphQLNonNull} = require('graphql');
 const
     { graphqlKoa } = require('graphql-server-koa');
-const { Player } = require('mlb-stat-schema');
-const playerType = require('../types/player')
+const { League } = require('mlb-stat-schema');
+const leagueType = require('../types/league')
 
 let schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
       player: {
-        type: new GraphQLList(playerType),
+        type: new GraphQLList(leagueType),
         args: {
-          mlb_id: {
-            name: 'mlb_id',
+          name: {
+            name: 'name',
             type: new GraphQLNonNull(GraphQLInt)
          }
         },
-        resolve: (root, {mlb_id}) => {
-          let foundPlayers = new Promise((resolve, reject) => {
-              Player.find({mlb_id}, (err, players) => {
-                  err ? reject(err) : resolve(players)
+        resolve: (root, {name}) => {
+          let foundLeagues = new Promise((resolve, reject) => {
+              League.find({name}, (err, leagues) => {
+                  err ? reject(err) : resolve(leagues)
               })
           })
-          return foundPlayers
+          return foundLeagues
         }
       }
     }

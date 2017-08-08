@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    //"lint": "eslint src --color",
-    "precommit": "--no-verify"
+    "lint": "eslint src --color",
+    "precommit": "lint"
   },
   "author": "",
   "license": "ISC",

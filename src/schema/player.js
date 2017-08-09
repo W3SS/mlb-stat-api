@@ -1,13 +1,10 @@
-const
-    { graphql,
-    GraphQLInt,
-    GraphQLList,
-    GraphQLSchema,
-    GraphQLObjectType,
-    GraphQLNonNull} = require('graphql');
-const
-    { graphqlKoa } = require('graphql-server-koa');
-const { Player } = require('mlb-stat-schema');
+const { GraphQLInt,
+  GraphQLList,
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLNonNull} = require('graphql')
+const { graphqlKoa } = require('graphql-server-koa')
+const { Player } = require('mlb-stat-schema')
 const playerType = require('../types/player')
 
 let schema = new GraphQLSchema({
@@ -20,13 +17,13 @@ let schema = new GraphQLSchema({
           mlb_id: {
             name: 'mlb_id',
             type: new GraphQLNonNull(GraphQLInt)
-         }
+          }
         },
         resolve: (root, {mlb_id}) => {
           let foundPlayers = new Promise((resolve, reject) => {
-              Player.find({mlb_id}, (err, players) => {
-                  err ? reject(err) : resolve(players)
-              })
+            Player.find({mlb_id}, (err, players) => {
+              err ? reject(err) : resolve(players)
+            })
           })
           return foundPlayers
         }
@@ -35,4 +32,4 @@ let schema = new GraphQLSchema({
   })
 })
 
-module.exports = graphqlKoa({ schema: schema})
+module.exports = graphqlKoa({ schema: schema })

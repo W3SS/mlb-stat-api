@@ -5,8 +5,7 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const BodyParser = require('koa-bodyparser')
 const { graphiqlKoa } = require('graphql-server-koa')
-const playerGraph = require('./schema/player')
-const leagueGraph = require('./schema/league')
+const mlbGraph = require('./schema')
 const db = require('./db.js')
 
 const app = new Koa()
@@ -25,9 +24,8 @@ app.use(async (ctx, next) => {
 
 app.use(BodyParser())
 
-router.post('/players', playerGraph)
-router.post('/leagues', leagueGraph)
-router.get('/graphiql', graphiqlKoa({ endpointURL: '/leagues' }))
+router.post('/mlb', mlbGraph)
+router.get('/graphiql', graphiqlKoa({ endpointURL: '/mlb' }))
 
 app
   .use(router.routes())

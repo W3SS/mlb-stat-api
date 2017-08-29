@@ -1,8 +1,8 @@
 const { Division } = require('mlb-stat-schema')
 
-const findBySeason = (season) => {
-  if (season) {
-    return Division.find({season})
+const findBySeasonAndLeagueAndName = (season, league, name) => {
+  if (season && league && name) {
+    return Division.find({season: season, league: league, name: name})
   }
 
   return Division.find({})
@@ -17,6 +17,6 @@ const find = (id) => {
 }
 
 module.exports = {
-  findBySeason,
+  findBySeasonAndLeagueAndName,
   find
 }

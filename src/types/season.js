@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql')
-const { SeasonRepository } = require('../repository')
+const { LeagueRepository } = require('../repository')
 const leagueType = require('./league')
 
 let seasonType = new GraphQLObjectType({
@@ -16,18 +16,18 @@ let seasonType = new GraphQLObjectType({
     },
     leagues: {
       type: new GraphQLList(leagueType),
+      args: {
+        name: {
+          name: 'name',
+          type: GraphQLString
+        }
+      },
+      resolve: (season, {name}) => {
+        return LeagueRepository.findBySeasonAndName(season.year, name)
+      },
       description: 'Leagues of the season'
     }
-  }),
-  args: {
-    year: {
-      name: 'year',
-      type: GraphQLString
-    }
-  },
-  resolve: (root, {year}) => {
-    return SeasonRepository.findByYear(year)
-  }
+  })
 })
 
 module.exports = seasonType

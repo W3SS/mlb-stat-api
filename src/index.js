@@ -27,9 +27,7 @@ app.use(BodyParser())
 router.post('/mlb', mlbGraph)
 router.get('/graphiql', graphiqlKoa({ endpointURL: '/mlb' }))
 
-app
-  .use(router.routes())
-  .use(router.allowedMethods())
+app.use(router.routes()).use(router.allowedMethods())
 
 app.use(compress())
 

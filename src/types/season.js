@@ -1,12 +1,22 @@
-const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql')
-const { LeagueRepository } = require('../repository')
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLList,
+  GraphQLNonNull
+} = require('graphql')
+const { League } = require('mlb-stat-schema')
 const leagueType = require('./league')
 
 let seasonType = new GraphQLObjectType({
   name: 'season',
   description: 'a season',
   fields: () => ({
-    type: {
+    id: {
+      type: GraphQLNonNull(GraphQLInt),
+      description: 'Primary key'
+    },
+    name: {
       type: GraphQLString,
       description: 'Regular or Playoff'
     },
@@ -22,8 +32,8 @@ let seasonType = new GraphQLObjectType({
           type: GraphQLString
         }
       },
-      resolve: (season, {name}) => {
-        return LeagueRepository.findBySeasonAndName(season.year, name)
+      resolve: (season, { name }) => {
+        return League.findBySeasonAndName(season.id, name)
       },
       description: 'Leagues of the season'
     }

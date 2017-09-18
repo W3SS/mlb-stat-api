@@ -1,6 +1,6 @@
 const { GraphQLString, GraphQLList, GraphQLSchema, GraphQLObjectType } = require('graphql')
 const { graphqlKoa } = require('graphql-server-koa')
-const { SeasonRepository } = require('../repository')
+const { Season } = require('mlb-stat-schema')
 
 const seasonType = require('../types/season')
 
@@ -17,7 +17,7 @@ let schema = new GraphQLSchema({
           }
         },
         resolve: (root, {year}) => {
-          return SeasonRepository.findByYear(year)
+          return Season.findByYear(year)
         }
       }
     }

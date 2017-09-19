@@ -1,19 +1,21 @@
-const chalk = require('chalk')
-const config = require('config')
-const compress = require('koa-compress')
-const Koa = require('koa')
-const Router = require('koa-router')
-const BodyParser = require('koa-bodyparser')
-const { graphiqlKoa } = require('graphql-server-koa')
-const mlbGraph = require('./schema')
-const db = require('./db.js')
+import chalk from 'chalk'
+import config from 'config'
+import compress from 'koa-compress'
+import Koa from 'koa'
+import Router from 'koa-router'
+import BodyParser from 'koa-bodyparser'
+import { graphiqlKoa } from 'graphql-server-koa'
+import Schema from 'mlb-stat-schema'
+import mlbGraph from './schema'
 
 const app = new Koa()
 const router = new Router()
 
+const db = new Schema(config.get('db.host'))
+
 app.use(async (ctx, next) => {
   try {
-    await db.connect(config.get('db.host'))
+    await db.connect()
     await next()
   } catch (error) {
     console.log(chalk.red(error))

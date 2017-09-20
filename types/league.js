@@ -8,4 +8,4 @@ const LeagueType = `
     }
 `
 
-export default () => [LeagueType, DivisionType]
+export default () => [LeagueType, ...DivisionType]

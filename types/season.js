@@ -5,8 +5,8 @@ const SeasonType = `
       id: Int!
       name: String
       year: String,
-      leagues: [League]
+      leagues(name: String): [League]
     }
 `
 
-export default () => [SeasonType, LeagueType]
+export default () => [SeasonType, ...LeagueType]

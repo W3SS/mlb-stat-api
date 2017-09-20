@@ -4,8 +4,8 @@ const DivisionType = `
   type Division {
       id: Int!
       name: String
-      teams: [Team]
+      teams(name: String): [Team]
     }
 `
 
-export default () => [DivisionType, TeamType]
+export default () => [DivisionType, ...TeamType]

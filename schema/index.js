@@ -1,12 +1,12 @@
+import { merge } from 'lodash'
 import { makeExecutableSchema } from 'graphql-tools'
-import { SeasonType, LeagueType, DivisionType, TeamType } from '../types'
+import Types from '../types'
 import { SeasonResolver, LeagueResolver, DivisionResolver } from '../resolvers'
 
-const schema = [SeasonType, LeagueType, DivisionType, TeamType]
-const resolvers = [SeasonResolver, LeagueResolver, DivisionResolver]
+const resolvers = merge(SeasonResolver, LeagueResolver, DivisionResolver)
 
 const executableSchema = makeExecutableSchema({
-  typeDefs: schema,
+  typeDefs: [...Types],
   resolvers
 })
 

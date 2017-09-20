@@ -1,6 +1,6 @@
-import Division from './division'
+import DivisionType from './division'
 
-const League = `
+const LeagueType = `
   type League {
       id: Int!
       name: String
@@ -8,4 +8,4 @@ const League = `
     }
 `
 
-export default () => [League, Division]
+export default () => [LeagueType, DivisionType]

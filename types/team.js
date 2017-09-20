@@ -1,4 +1,4 @@
-const Team = `
+const TeamType = `
   type Team {
       id: Int!
       name: String
@@ -7,4 +7,4 @@ const Team = `
     }
 `
 
-export default () => [Team]
+export default () => [TeamType]

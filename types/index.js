@@ -1,11 +1,11 @@
-import Season from './season'
-import League from './league'
-import Division from './division'
-import Team from './team'
+import SeasonType from './season'
+import LeagueType from './league'
+import DivisionType from './division'
+import TeamType from './team'
 
 export default {
-  Season,
-  League,
-  Division,
-  Team
+  SeasonType,
+  LeagueType,
+  DivisionType,
+  TeamType
 }

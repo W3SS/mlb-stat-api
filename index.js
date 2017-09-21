@@ -5,13 +5,15 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import BodyParser from 'koa-bodyparser'
 import { graphiqlKoa } from 'graphql-server-koa'
+import { graphqlKoa } from 'apollo-server-koa'
 import Schema from 'mlb-stat-schema'
-import mlbGraph from './schema'
+import createExecutableSchema from './schema'
 
 const app = new Koa()
 const router = new Router()
 
 const db = new Schema(config.get('db.host'))
+const port = config.get('port')
 
 app.use(async (ctx, next) => {
   try {
@@ -26,11 +28,13 @@ app.use(async (ctx, next) => {
 
 app.use(BodyParser())
 
-router.post('/mlb', mlbGraph)
+const mlbGraph = createExecutableSchema(db)
+
+router.post('/mlb', graphqlKoa({ schema: mlbGraph }))
 router.get('/graphiql', graphiqlKoa({ endpointURL: '/mlb' }))
 
 app.use(router.routes()).use(router.allowedMethods())
 
 app.use(compress())
 
-app.listen(3000)
+app.listen(port)

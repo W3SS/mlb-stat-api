@@ -1,8 +1,16 @@
-import SeasonType from './season'
+import Team from './team'
+import Division from './division'
+import League from './league'
+import Season from './season'
 
-const QueryType = `
+const Query = `
   type Query {
     seasons(year: Int): [Season]
   }
   `
-export default () => [QueryType, ...SeasonType]
+const SchemaDefinition = `
+  schema {
+    query: Query
+  }
+`
+export default () => [Team, Division, League, Season, Query, SchemaDefinition]

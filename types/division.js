@@ -1,6 +1,4 @@
-import TeamType from './team'
-
-const DivisionType = `
+const Division = `
   type Division {
       id: Int!
       name: String
@@ -8,4 +6,4 @@ const DivisionType = `
     }
 `
 
-export default () => [DivisionType, ...TeamType]
+export default Division

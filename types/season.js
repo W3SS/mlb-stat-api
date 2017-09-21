@@ -1,6 +1,4 @@
-import LeagueType from './league'
-
-const SeasonType = `
+const Season = `
   type Season {
       id: Int!
       name: String
@@ -9,4 +7,4 @@ const SeasonType = `
     }
 `
 
-export default () => [SeasonType, ...LeagueType]
+export default Season

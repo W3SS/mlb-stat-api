@@ -20,7 +20,7 @@
     "config": "^1.26.2",
     "graphql": "^0.10.5",
     "graphql-server-koa": "^1.1.2",
-    "graphql-tools": "^1.2.2",
+    "graphql-tools": "^1.2.3",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "eslint": "^4.7.1",
+    "eslint": "^4.7.2",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",

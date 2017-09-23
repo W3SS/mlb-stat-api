@@ -7,7 +7,7 @@ import BodyParser from 'koa-bodyparser'
 import { graphiqlKoa } from 'graphql-server-koa'
 import { graphqlKoa } from 'apollo-server-koa'
 import Schema from 'mlb-stat-schema'
-import createExecutableSchema from './schema'
+import mlbGraph from './schema'
 
 const app = new Koa()
 const router = new Router()
@@ -26,9 +26,7 @@ let run = async () => {
 
   app.use(BodyParser())
 
-  const mlbGraph = createExecutableSchema(db)
-
-  router.post('/mlb', graphqlKoa({ schema: mlbGraph }))
+  router.post('/mlb', graphqlKoa({ schema: mlbGraph, context: { db } }))
   router.get('/graphiql', graphiqlKoa({ endpointURL: '/mlb' }))
 
   app.use(router.routes()).use(router.allowedMethods())

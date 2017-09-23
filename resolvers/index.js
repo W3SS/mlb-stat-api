@@ -1,3 +1,4 @@
+import { merge } from 'lodash'
 import SeasonResolver from './season'
 import LeagueResolver from './league'
 import DivisionResolver from './division'
@@ -5,14 +6,11 @@ import DivisionResolver from './division'
 const QueryResolver = {
   Query: {
     seasons (root, args, context, info) {
-      return context.db.Team.findByYear(args.year)
+      return context.db.Season.findByYear(args.year)
     }
   }
 }
 
-export default {
-  QueryResolver,
-  SeasonResolver,
-  LeagueResolver,
-  DivisionResolver
-}
+const RootResolvers = merge(QueryResolver, SeasonResolver, LeagueResolver, DivisionResolver)
+
+export default RootResolvers

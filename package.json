@@ -11,6 +11,7 @@
     "test": "mocha types/*.test.js"
   },
   "engines": {
+    "node": "8.1.x",
     "npm": "5.2.x"
   },
   "author": "",

@@ -4,11 +4,14 @@
   "description": "GraphQL API for MLB Stat",
   "main": "index.js",
   "scripts": {
-    "lint": "esw src --color",
+    "lint": "eslint src --color",
     "precommit": "npm run lint",
     "start": "babel-node index.js",
     "dev": "nodemon index.js --watch resolvers types --exec babel-node",
     "test": "mocha types/*.test.js"
+  },
+  "engines": {
+    "npm": "5.2.x"
   },
   "author": "",
   "license": "ISC",

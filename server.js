@@ -12,8 +12,8 @@ import mlbGraph from './schema'
 const app = new Koa()
 const router = new Router()
 
-const db = new Schema(config.get('db.host'))
-const port = config.get('port')
+const db = new Schema(process.env.DBCONNECTION || config.get('db.host'))
+const port = process.env.PORT || config.get('port')
 
 let run = async () => {
   try {

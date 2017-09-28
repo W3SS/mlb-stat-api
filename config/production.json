@@ -1,7 +1,0 @@
-{
-  "db": {
-    "host":
-      "postgresql://rzcglftmxvwnqm:1d2e329ac1d2cddac10c246f157224f74f3ac6edde8e83d3135d0ed670d48026@ec2-176-34-111-152.eu-west-1.compute.amazonaws.com:5432/dep7kqka31ufec"
-  },
-  "port": 3000
-}

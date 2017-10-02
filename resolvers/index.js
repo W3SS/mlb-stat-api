@@ -1,8 +1,8 @@
-import { merge } from 'lodash'
-import SeasonResolver from './season'
-import LeagueResolver from './league'
-import DivisionResolver from './division'
-import TeamResolver from './team'
+const { merge } = require('lodash')
+const SeasonResolver = require('./season')
+const LeagueResolver = require('./league')
+const DivisionResolver = require('./division')
+const TeamResolver = require('./team')
 
 const QueryResolver = {
   Query: {
@@ -31,4 +31,4 @@ const RootResolvers = merge(
   TeamResolver
 )
 
-export default RootResolvers
+module.exports = RootResolvers

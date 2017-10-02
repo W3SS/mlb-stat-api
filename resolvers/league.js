@@ -6,4 +6,4 @@ const LeagueResolver = {
   }
 }
 
-export default LeagueResolver
+module.exports = LeagueResolver

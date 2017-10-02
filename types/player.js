@@ -6,7 +6,8 @@ type Player {
     full_name: String
     date_of_birth: String
     mlb_id: Int
+    positions: [Position]
   }
 `
 
-export default Player
+module.exports = Player

@@ -7,4 +7,4 @@ type Stadium {
   }
 `
 
-export default Stadium
+module.exports = Stadium

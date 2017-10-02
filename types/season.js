@@ -7,4 +7,4 @@ const Season = `
     }
 `
 
-export default Season
+module.exports = Season

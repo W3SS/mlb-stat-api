@@ -1,13 +1,13 @@
-import chalk from 'chalk'
-import config from 'config'
-import compress from 'koa-compress'
-import Koa from 'koa'
-import Router from 'koa-router'
-import BodyParser from 'koa-bodyparser'
-import { graphiqlKoa } from 'graphql-server-koa'
-import { graphqlKoa } from 'apollo-server-koa'
-import Schema from 'mlb-stat-schema'
-import mlbGraph from './schema'
+const chalk = require('chalk')
+const config = require('config')
+const compress = require('koa-compress')
+const Koa = require('koa')
+const Router = require('koa-router')
+const BodyParser = require('koa-bodyparser')
+const { graphiqlKoa } = require('graphql-server-koa')
+const { graphqlKoa } = require('apollo-server-koa')
+const Schema = require('mlb-stat-schema')
+const mlbGraph = require('./schema')
 
 const app = new Koa()
 const router = new Router()
@@ -36,6 +36,6 @@ let run = async () => {
   app.listen(port)
 }
 
-export default {
+module.exports = {
   run
 }

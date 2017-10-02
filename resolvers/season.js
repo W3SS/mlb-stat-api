@@ -6,4 +6,4 @@ const SeasonResolver = {
   }
 }
 
-export default SeasonResolver
+module.exports = SeasonResolver

@@ -9,4 +9,4 @@ const TeamResolver = {
   }
 }
 
-export default TeamResolver
+module.exports = TeamResolver

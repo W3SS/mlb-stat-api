@@ -6,4 +6,4 @@ const DivisionResolver = {
   }
 }
 
-export default DivisionResolver
+module.exports = DivisionResolver

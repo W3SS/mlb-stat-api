@@ -6,4 +6,4 @@ const League = `
     }
 `
 
-export default League
+module.exports = League

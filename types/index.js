@@ -1,9 +1,10 @@
-import Team from './team'
-import Division from './division'
-import League from './league'
-import Season from './season'
-import Player from './player'
-import Stadium from './stadium'
+const Team = require('./team')
+const Division = require('./division')
+const League = require('./league')
+const Season = require('./season')
+const Player = require('./player')
+const Stadium = require('./stadium')
+const Position = require('./position')
 
 const Query = `
   type Query {
@@ -25,7 +26,8 @@ const SchemaDefinition = `
     mutation: Mutation
   }
 `
-export default () => [
+module.exports = () => [
+  Position,
   Stadium,
   Player,
   Team,

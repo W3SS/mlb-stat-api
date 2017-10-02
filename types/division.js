@@ -6,4 +6,4 @@ const Division = `
     }
 `
 
-export default Division
+module.exports = Division

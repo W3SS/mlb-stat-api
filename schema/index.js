@@ -1,10 +1,10 @@
-import { makeExecutableSchema } from 'graphql-tools'
-import RootResolvers from '../resolvers'
-import Types from '../types'
+const { makeExecutableSchema } = require('graphql-tools')
+const RootResolvers = require('../resolvers')
+const Types = require('../types')
 
 const executableSchema = makeExecutableSchema({
   typeDefs: [Types],
   resolvers: RootResolvers
 })
 
-export default executableSchema
+module.exports = executableSchema

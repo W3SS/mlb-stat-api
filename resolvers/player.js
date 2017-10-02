@@ -1,9 +1,9 @@
-const DivisionResolver = {
-  Division: {
-    teams (division, args, context, info) {
-      return context.db.Team.findByDivisionAndName(division.id, args.name)
+const PlayerResolver = {
+  Player: {
+    positions (player, args, context, info) {
+      return context.db.Position.findByPlayer(player.id)
     }
   }
 }
 
-export default DivisionResolver
+module.exports = PlayerResolver

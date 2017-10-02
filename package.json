@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint src --color",
     "precommit": "npm run lint",
-    "start": "babel-node index.js",
-    "dev": "nodemon index.js --watch resolvers types --exec babel-node",
+    "start": "node index.js",
+    "dev": "nodemon index.js --watch resolvers types",
     "test": "mocha types/*.test.js"
   },
   "engines": {
@@ -17,9 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
     "chalk": "^2.1.0",
     "config": "^1.26.2",
     "graphql": "^0.10.5",
@@ -33,7 +30,6 @@
     "mlb-stat-schema": "github:meel-io/mlb-stat-schema"
   },
   "devDependencies": {
-    "babel-register": "^6.26.0",
     "eslint": "^4.7.2",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",

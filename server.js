@@ -27,7 +27,13 @@ let run = async () => {
   app.use(BodyParser())
 
   router.post('/mlb', graphqlKoa({ schema: mlbGraph, context: { db } }))
-  router.get('/graphiql', graphiqlKoa({ endpointURL: '/mlb' }))
+  router.get(
+    '/graphiql',
+    graphiqlKoa({
+      endpointURL: '/mlb',
+      subscriptionsEndpoint: `ws://localhost:4000/subscriptions`
+    })
+  )
 
   app.use(router.routes()).use(router.allowedMethods())
 

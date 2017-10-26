@@ -4,5 +4,5 @@
   },
   "port": 3000,
   "subscriptionPort": 4000,
-  "subscriptionHost": "http://localhost"
+  "subscriptionHost": "ws://localhost"
 }

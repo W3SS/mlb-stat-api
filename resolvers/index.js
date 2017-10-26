@@ -8,7 +8,7 @@ const TeamResolver = require('./team')
 const QueryResolver = {
   Query: {
     seasons (root, args, context, info) {
-      return context.db.Season.findByYear(args.year)
+      return context.db.Season.findBy({ year: args.year })
     }
   }
 }

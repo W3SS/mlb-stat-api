@@ -14,6 +14,8 @@ const router = new Router()
 
 const db = new Schema(process.env.DBCONNECTION || config.get('db.host'))
 const port = process.env.PORT || config.get('port')
+const subscriptionPort = process.env.SUBSCRIPTION_PORT || config.get('subscriptionPort')
+const subscriptionHost = process.env.SUBSCRIPTION_HOST || config.get('subscriptionHost')
 
 let run = async () => {
   try {
@@ -31,7 +33,7 @@ let run = async () => {
     '/graphiql',
     graphiqlKoa({
       endpointURL: '/mlb',
-      subscriptionsEndpoint: `ws://localhost:4000/subscriptions`
+      subscriptionsEndpoint: `${subscriptionHost}:${subscriptionPort}/subscriptions`
     })
   )
 

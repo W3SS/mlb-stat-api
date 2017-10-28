@@ -7,8 +7,8 @@ const TeamResolver = require('./team')
 
 const QueryResolver = {
   Query: {
-    seasons (root, args, context, info) {
-      return context.db.Season.findBy({ year: args.year })
+    async seasons (root, args, context, info) {
+      return context.db.Season.findBy(args)
     }
   }
 }
@@ -16,7 +16,7 @@ const QueryResolver = {
 const MutationResolver = {
   Mutation: {
     async updateDivision (root, args, context, info) {
-      let team = await context.db.Team.updateDivision(args.teamId, args.divisionId)
+      let team = await context.db.Team.updateDivision(args)
 
       return team[0]
     }

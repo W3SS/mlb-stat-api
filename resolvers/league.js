@@ -1,7 +1,7 @@
 const LeagueResolver = {
   League: {
     divisions (league, args, context, info) {
-      return context.db.Division.findByLeague({ league: league.id })
+      return context.db.Division.findBy({ league: league.id })
     }
   }
 }

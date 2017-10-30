@@ -4,6 +4,7 @@ const Season = `
       name: String
       year: String
       leagues(name: String): [League]
+      teams(name: String): [Team]
     }
 `
 

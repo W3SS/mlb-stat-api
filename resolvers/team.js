@@ -4,7 +4,7 @@ const TeamResolver = {
       return context.db.Player.findBy({ team: team.id, ...args })
     },
     stadium (team, args, context, info) {
-      return context.db.Stadium.find(team.id)
+      return context.db.Stadium.find(team.stadium_id)
     }
   }
 }

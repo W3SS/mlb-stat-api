@@ -5,6 +5,7 @@ const Season = `
       year: String
       leagues(name: String): [League]
       teams(name: String): [Team]
+      games(awayTeamName: String, homeTeamName: String): [Game]
     }
 `
 

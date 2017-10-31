@@ -1,3 +1,4 @@
+const Game = require('./game')
 const Team = require('./team')
 const Division = require('./division')
 const League = require('./league')
@@ -33,6 +34,7 @@ module.exports = () => [
   Team,
   Division,
   League,
+  Game,
   Season,
   Query,
   Mutation,

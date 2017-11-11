@@ -17,11 +17,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-hapi": "^1.2.0",
     "chalk": "^2.1.0",
     "config": "^1.27.0",
     "graphql": "^0.10.5",
-    "graphql-server-koa": "^1.1.7",
     "graphql-tools": "^1.2.3",
+    "hapi": "^16.6.2",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",

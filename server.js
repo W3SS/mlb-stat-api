@@ -1,16 +1,9 @@
 const chalk = require('chalk')
 const config = require('config')
-const compress = require('koa-compress')
-const Koa = require('koa')
-const Router = require('koa-router')
-const BodyParser = require('koa-bodyparser')
-const { graphiqlKoa } = require('graphql-server-koa')
-const { graphqlKoa } = require('apollo-server-koa')
+const Hapi = require('hapi')
+const { graphqlHapi, graphiqlHapi } = require('apollo-server-hapi')
 const Schema = require('mlb-stat-schema')
 const mlbGraph = require('./schema')
-
-const app = new Koa()
-const router = new Router()
 
 const db = new Schema(process.env.DBCONNECTION || config.get('db.host'))
 const port = process.env.PORT || config.get('port')
@@ -26,22 +19,33 @@ let run = async () => {
     process.exit()
   }
 
-  app.use(BodyParser())
+  const app = new Hapi.Server()
+  app.connection({ port })
 
-  router.post('/mlb', graphqlKoa({ schema: mlbGraph, context: { db } }))
-  router.get(
-    '/graphiql',
-    graphiqlKoa({
-      endpointURL: '/mlb',
-      subscriptionsEndpoint: `${subscriptionHost}:${subscriptionPort}/subscriptions`
-    })
-  )
+  app.register({
+    register: graphqlHapi,
+    options: {
+      path: '/mlb',
+      graphqlOptions: { schema: mlbGraph, context: { db } }
+    }
+  })
 
-  app.use(router.routes()).use(router.allowedMethods())
+  app.register({
+    register: graphiqlHapi,
+    options: {
+      path: '/graphiql',
+      graphiqlOptions: {
+        endpointURL: '/mlb',
+        subscriptionsEndpoint: `${subscriptionHost}:${subscriptionPort}/subscriptions`
+      }
+    }
+  })
 
-  app.use(compress())
+  await app.start().catch(error => {
+    throw error
+  })
 
-  app.listen(port)
+  console.log(chalk.green(`Connection established in port: ${port}`))
 }
 
 module.exports = {

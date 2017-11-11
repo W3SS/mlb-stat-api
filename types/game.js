@@ -10,6 +10,7 @@ const Game = `
       homeTeamHits: Int!
       awayTeamErrors: Int!
       homeTeamErrors: Int!
+      startTime: String
     }
   `
 

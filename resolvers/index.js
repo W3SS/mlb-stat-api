@@ -5,6 +5,7 @@ const LeagueResolver = require('./league')
 const DivisionResolver = require('./division')
 const TeamResolver = require('./team')
 const PlayerResolver = require('./player')
+const GameResolver = require('./game')
 
 const QueryResolver = {
   Query: {
@@ -31,7 +32,8 @@ const RootResolvers = merge(
   LeagueResolver,
   DivisionResolver,
   TeamResolver,
-  PlayerResolver
+  PlayerResolver,
+  GameResolver
 )
 
 module.exports = RootResolvers

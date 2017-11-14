@@ -6,24 +6,8 @@ const DivisionResolver = require('./division')
 const TeamResolver = require('./team')
 const PlayerResolver = require('./player')
 const GameResolver = require('./game')
-
-const QueryResolver = {
-  Query: {
-    async seasons (root, args, context, info) {
-      return context.db.Season.findBy(args)
-    }
-  }
-}
-
-const MutationResolver = {
-  Mutation: {
-    async updateDivision (root, args, context, info) {
-      let team = await context.db.Team.updateDivision(args)
-
-      return team[0]
-    }
-  }
-}
+const QueryResolver = require('./query')
+const MutationResolver = require('./mutation')
 
 const RootResolvers = merge(
   QueryResolver,

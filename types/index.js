@@ -6,20 +6,8 @@ const Season = require('./season')
 const Player = require('./player')
 const Stadium = require('./stadium')
 const Position = require('./position')
-
-const Query = `
-  type Query {
-    seasons(year: Int): [Season]
-  }
-  `
-const Mutation = `
-  type Mutation {
-    updateDivision (
-      teamId: Int!,
-      divisionId: Int!
-    ): Team
-  }
-`
+const Mutation = require('./mutation')
+const Query = require('./query')
 
 const SchemaDefinition = `
   schema {

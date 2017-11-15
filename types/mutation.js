@@ -4,8 +4,8 @@ const Mutation = `
       teamId: Int!,
       divisionId: Int!
     ): Team
-    addGame (
-      id: Int!,
+    saveGame (
+      id: Int,
       seasonId: Int!,
       awayTeamId: Int!
       homeTeamId: Int!

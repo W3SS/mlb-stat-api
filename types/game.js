@@ -1,6 +1,6 @@
 const Game = `
   type Game {
-      id: Int!
+      id: Int
       season: Season!
       awayTeam: Team!
       homeTeam: Team!

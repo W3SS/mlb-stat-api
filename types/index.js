@@ -8,6 +8,7 @@ const Stadium = require('./stadium')
 const Position = require('./position')
 const Mutation = require('./mutation')
 const Query = require('./query')
+const Subscription = require('./subscription')
 
 const SchemaDefinition = `
   schema {
@@ -26,5 +27,6 @@ module.exports = () => [
   Season,
   Query,
   Mutation,
+  Subscription,
   SchemaDefinition
 ]

@@ -1,14 +1,18 @@
+const pubsub = require('./pubsub')
+
 const MutationResolver = {
   Mutation: {
     async updateDivision (root, args, context, info) {
-      let team = await context.db.Team.updateDivision(args)
+      const team = await context.db.Team.updateDivision(args)
 
       return team[0]
     },
-    async addGame (root, args, context, info) {
-      let team = await context.db.Game.updateDivision(args)
+    async saveGame (root, args, context, info) {
+      const game = await context.db.Game.save(args)
 
-      return team[0]
+      pubsub.publish('gameUpdate', game)
+
+      return game
     }
   }
 }

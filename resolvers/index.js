@@ -8,10 +8,12 @@ const PlayerResolver = require('./player')
 const GameResolver = require('./game')
 const QueryResolver = require('./query')
 const MutationResolver = require('./mutation')
+const SubscriptionResolver = require('./subscription')
 
 const RootResolvers = merge(
   QueryResolver,
   MutationResolver,
+  SubscriptionResolver,
   SeasonResolver,
   LeagueResolver,
   DivisionResolver,

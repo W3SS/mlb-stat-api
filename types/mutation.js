@@ -16,6 +16,7 @@ const Mutation = `
       awayTeamErrors: Int!
       homeTeamErrors: Int!
       date: String!
+      startTime: String!
     ): Game
   }
   `

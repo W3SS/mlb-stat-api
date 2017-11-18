@@ -3,6 +3,7 @@ const config = require('config')
 const Hapi = require('hapi')
 const { graphqlHapi, graphiqlHapi } = require('apollo-server-hapi')
 const Schema = require('mlb-stat-schema')
+const subscriptionServer = require('mlb-stat-subscription')
 const mlbGraph = require('./schema')
 
 const db = new Schema(process.env.DBCONNECTION || config.get('db.host'))
@@ -46,6 +47,8 @@ let run = async () => {
   })
 
   console.log(chalk.green(`Connection established in port: ${port}`))
+
+  subscriptionServer(app, subscriptionHost, subscriptionPort, mlbGraph)
 }
 
 module.exports = {

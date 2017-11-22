@@ -21,7 +21,8 @@ let run = async () => {
   }
 
   const app = new Hapi.Server()
-  app.connection({ port })
+  app.connection({ port, labels: ['api'] })
+  app.connection({ port: subscriptionPort, labels: ['ws'] })
 
   app.register({
     register: graphqlHapi,
@@ -48,7 +49,7 @@ let run = async () => {
 
   console.log(chalk.green(`Connection established in port: ${port}`))
 
-  subscriptionServer(app, subscriptionHost, subscriptionPort, mlbGraph)
+  subscriptionServer(app.select('ws').listener, mlbGraph)
 }
 
 module.exports = {

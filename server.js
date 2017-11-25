@@ -13,7 +13,7 @@ const subscriptionHost = process.env.SUBSCRIPTION_HOST || config.get('subscripti
 
 let run = async () => {
   try {
-    await db.connect()
+    //await db.connect()
   } catch (error) {
     console.log(chalk.red(error))
     console.log(chalk.red('Connection error in: ' + config.get('db.host')))
@@ -49,7 +49,19 @@ let run = async () => {
 
   console.log(chalk.green(`Connection established in port: ${port}`))
 
-  subscriptionServer(app.select('ws').listener, mlbGraph)
+  SubscriptionServer.create(
+    {
+      schema,
+      execute,
+      subscribe,
+    },
+    {
+      server: app.select('ws'),
+      path: '/subscriptions',
+    }
+  )
+
+  console.log(chalk.green(`Subscription established in port: ${subscriptionPort}`))
 }
 
 module.exports = {
